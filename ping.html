@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Ping WS</title>
+</head>
+<body>
+  <h3>Abre la consola (F12) y busca "WS conectado".</h3>
+  <script>
+    const WS_URL = 'ws://localhost:8081';
+    const ws = new WebSocket(WS_URL);
+
+    ws.onopen = () => {
+      console.log('WS conectado');
+      ws.send(JSON.stringify({ type: 'ping' }));
+    };
+    ws.onmessage = (e) => console.log('WS msg:', e.data);
+    ws.onerror = (e) => console.error('WS error:', e);
+    ws.onclose = () => console.warn('WS cerrado');
+  </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+:root{
+  --green:#2ecc71; --ink:#111; --muted:#6b7280; --bg:#f4f4f6; --card:#fff;
+  --panel:#eeeeef; --danger:#cc2e3b; --record:#e01b24;
+  --radius:16px; --thumbH:120px;
+}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;background:var(--bg);color:var(--ink)}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:var(--green);color:#fff;position:sticky;top:0;z-index:20}
+.topbar .left{font-weight:700}
+.topbar .right{display:flex;gap:8px;align-items:center}
+.btn{border:0;padding:10px 14px;border-radius:12px;background:#fff;color:var(--ink);cursor:pointer;font-weight:600}
+.btn--dark{background:#111;color:#fff}
+.chip{border:0;padding:8px 10px;border-radius:10px;background:#0f172a1a;color:#fff;cursor:pointer}
+.avatar.small{inline-size:34px;block-size:34px;border-radius:50%;background:#fff3 center/cover no-repeat;}
+
+.shell{display:grid;grid-template-columns:320px 1fr;gap:12px;padding:12px;min-height:calc(100vh - 64px)}
+
+/* Rail izquierdo */
+.rail{display:flex;flex-direction:column;gap:12px}
+.rail-head{display:flex;align-items:center;justify-content:space-between}
+.ttl{font:700 14px/1 system-ui;color:#555}
+
+.thumbs{background:var(--card);border:1px solid #e7e7ec;border-radius:18px;padding:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px;max-height:380px;overflow:auto}
+.thumb{background:#f8f8fb;border:1px solid #eee;border-radius:12px;overflow:hidden}
+.video-wrap{position:relative;inline-size:100%;block-size:var(--thumbH);background:#000;display:grid;place-items:center}
+.video-wrap video{width:100%;height:100%;object-fit:cover;display:block}
+.badges{position:absolute;right:6px;top:6px;display:flex;gap:6px}
+.badge{display:inline-block;background:rgba(0,0,0,.55);color:#fff;padding:2px 6px;border-radius:8px;font:12px/1 system-ui}
+.meta{padding:6px 8px}
+.meta .name{font:600 12px/1.2 system-ui}
+.meta .nick{font:11px/1.2 system-ui;color:#6b7280}
+
+/* Chat en rail */
+.chat{background:var(--card);border:1px solid #e7e7ec;border-radius:18px;display:flex;flex-direction:column;overflow:hidden}
+.chat__title{padding:8px 10px;border-bottom:1px solid #eee;font:700 12px/1 system-ui;color:#666}
+.chat__stream{padding:10px;max-height:260px;overflow:auto}
+.msg{margin:8px 0;max-width:92%}
+.msg.me{text-align:right;margin-left:auto}
+.msg .bubble{display:inline-block;background:#ecebff;color:#111;padding:8px 12px;border-radius:14px}
+.msg .meta{font:11px/1 system-ui;color:#888;margin-top:4px}
+.chat__form{display:flex;gap:8px;padding:8px;border-top:1px solid #eee}
+.chat__menu{border:0;background:#edecef;border-radius:10px;inline-size:36px;block-size:36px}
+.chat__input{flex:1;border:1px solid #e6e6ea;border-radius:12px;padding:10px 12px}
+.chat__send{border:0;background:#111;color:#fff;border-radius:10px;padding:10px 12px;cursor:pointer}
+
+/* Stage + pizarra + dock */
+.stage{background:var(--card);border:1px solid #e7e7ec;border-radius:20px;padding:12px;display:flex;flex-direction:column;gap:12px}
+.board{position:relative;border-radius:14px;background:#dedfe5;flex:1;min-height:420px;display:grid;place-items:center;overflow:hidden}
+#boardCanvas{position:absolute;inset:0;width:100%;height:100%}
+.board__placeholder{background:#f4eef8;border:1px dashed #c7bfe3;border-radius:12px;padding:24px 28px;color:#544d72}
+.dock{display:flex;gap:12px;align-items:center;justify-content:center}
+.tool{border:0;background:#e6e7ef;border-radius:10px;inline-size:46px;block-size:46px;cursor:pointer;font-size:18px}
+.sp{flex:1}
+.round{width:64px;height:64px;border-radius:50%;border:0;background:#eaeaea;display:grid;place-items:center;cursor:pointer;box-shadow:inset 0 -2px 0 rgba(0,0,0,.08);font-size:24px}
+.round--danger{background:var(--danger);color:#fff}
+.round--record{background:#fff;border:4px solid var(--record);color:var(--record)}
+.sel{padding:8px 10px;border-radius:10px;border:1px solid #e6e6ea;background:#fff}
+.status{font:12px/1 system-ui;color:#6b7280}
+
+@media (max-width:1024px){
+  .shell{grid-template-columns:1fr}
+  .thumbs{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:760px){
+  .thumbs{grid-template-columns:repeat(2,1fr)}
+}
